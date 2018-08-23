@@ -1,0 +1,32 @@
+{
+  "name": "sset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "demo.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "describe": "^1.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mochanpm "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viocost/SSet.git"
+  },
+  "author": "KONSTANTIN Y RYBAKOV",
+  "email" : "viocost@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/viocost/SSet/issues"
+  },
+  "homepage": "https://github.com/viocost/SSet#readme",
+  "keywords": ["set", "es6"]
+}
