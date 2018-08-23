@@ -1,5 +1,5 @@
 # CuteSet
-This is minimalistic es6 implementation of set and its basic operations, based on native javascript Set. 
+This is minimalistic es6 implementation of set and its basic operations, based on native javascript Set.
 
 ### Installation
 ```
@@ -10,7 +10,7 @@ npm i --save cute-set
 
 ```
 //Node.js
-const CuteSet = require("CuteSet");
+const CuteSet = require("cute-set");
 
 ```
 
