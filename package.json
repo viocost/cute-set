@@ -1,6 +1,6 @@
 {
   "name": "cute-set",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A minimalistic es6 implementation of set",
   "main": "index.js",
   "directories": {
