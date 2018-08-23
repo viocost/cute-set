@@ -2,7 +2,7 @@
   "name": "cute-set",
   "version": "1.0.1",
   "description": "A minimalistic es6 implementation of set",
-  "main": "demo.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
