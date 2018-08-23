@@ -1,6 +1,6 @@
 {
   "name": "cute-set",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A minimalistic es6 implementation of set",
   "main": "demo.js",
   "directories": {
@@ -19,11 +19,14 @@
     "url": "git+https://github.com/viocost/SSet.git"
   },
   "author": "KONSTANTIN Y RYBAKOV",
-  "email" : "viocost@gmail.com",
+  "email": "viocost@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/viocost/SSet/issues"
   },
   "homepage": "https://github.com/viocost/SSet#readme",
-  "keywords": ["set", "cute-set"]
+  "keywords": [
+    "set",
+    "cute-set"
+  ]
 }
