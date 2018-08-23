@@ -1,16 +1,13 @@
 {
   "name": "sset",
   "version": "1.0.0",
-  "description": "",
+  "description": "A minimalistic es6 implementation of set",
   "main": "demo.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
-  "dependencies": {
-    "chai": "^4.1.2",
-    "describe": "^1.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "mocha": "^5.2.0"
   },

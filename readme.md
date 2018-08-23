@@ -1,5 +1,5 @@
 # SSet
-This is minimalistic es6 implementation of Set, based on native Set. It implements all useful set operations which are missing in native Set.
+This is minimalistic es6 implementation of set and its basic operations, based on native javascript Set. 
 
 ### Installation
 ```
