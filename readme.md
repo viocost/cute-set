@@ -3,7 +3,7 @@ This is minimalistic es6 implementation of Set, based on native Set. It implemen
 
 ### Installation
 ```
-npm i --save "sset"
+npm i --save sset
 ```
 
 ### API
@@ -73,7 +73,7 @@ const SSet = require("sset");
 
 
 
-*Methods marked with &ast may take arrays, strings and native sets as input and turn it into SSet instance before processing. It is acceptable to do following:*
+*Methods marked with * may take arrays, strings and native sets as input and turn it into SSet instance before processing. It is acceptable to do following:*
 ```
 let a = new SSet(["1", "2", "3"]);
 let b = a.union(["2", "3", "4", "5"]);
