@@ -1,6 +1,6 @@
-const SSet = require("./lib/SSet.js");
+const CuteSet = require("./lib/CuteSet.js");
 
-let a = new SSet([1, 2, 3]);
+let a = new CuteSet([1, 2, 3]);
 
 //Prints "1 2 3"
 a.print();

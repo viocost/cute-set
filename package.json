@@ -1,5 +1,5 @@
 {
-  "name": "sset",
+  "name": "cute-set",
   "version": "1.0.0",
   "description": "A minimalistic es6 implementation of set",
   "main": "demo.js",
@@ -25,5 +25,5 @@
     "url": "https://github.com/viocost/SSet/issues"
   },
   "homepage": "https://github.com/viocost/SSet#readme",
-  "keywords": ["set", "es6"]
+  "keywords": ["set", "cute-set"]
 }

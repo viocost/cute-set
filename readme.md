@@ -1,16 +1,16 @@
-# SSet
+# CuteSet
 This is minimalistic es6 implementation of set and its basic operations, based on native javascript Set. 
 
 ### Installation
 ```
-npm i --save sset
+npm i --save cute-set
 ```
 
 ### API
 
 ```
 //Node.js
-const SSet = require("sset");
+const CuteSet = require("CuteSet");
 
 ```
 
@@ -68,14 +68,14 @@ const SSet = require("sset");
     turns set into native Array and returns it
 
 * #### *static* fromString(input, delimiter)
-    Creates new instance of SSet from passed strings.
+    Creates new instance of CuteSet from passed strings.
     Delimiter is optional and by default it is one space.
 
 
 
-*Methods marked with * may take arrays, strings and native sets as input and turn it into SSet instance before processing. It is acceptable to do following:*
+*Methods marked with * may take arrays, strings and native sets as input and turn it into CuteSet instance before processing. It is acceptable to do following:*
 ```
-let a = new SSet(["1", "2", "3"]);
+let a = new CuteSet(["1", "2", "3"]);
 let b = a.union(["2", "3", "4", "5"]);
 let c = b.intersection("3489");
 
