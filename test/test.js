@@ -74,9 +74,13 @@ describe("SSet",()=>{
 
     });
 
-    it("test length", ()=>{
-        let a = new SSet([1, 2, 3, 4, 5]);
-        assert(a.length() === 5)
-        assert(new SSet().length()===0)
+
+    it("testing various inputs", ()=>{
+        let a = new SSet(["1", "2", "3"]);
+        let b = a.union(["2", "3", "4", "5"]);
+        let c = b.intersection("3489");
+        console.log(c.toString());
+        assert(c.toString() === "3 4")
     })
+
 });
