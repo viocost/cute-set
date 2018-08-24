@@ -32,3 +32,14 @@ c.remove(8);
 
 //false
 console.log(c.has(8));
+
+
+let x = 
+x.print();
+
+let y = CuteSet.fromString("a b c", " ");
+y.print();
+
+new CuteSet("abc").intersection("a1234").print()
+
+console.log(x.equal(y));

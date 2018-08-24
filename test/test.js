@@ -3,10 +3,38 @@ const assert = require("assert");
 
 describe("CuteSet",()=>{
 
-    it("Should create set from array", ()=>{
+    it("Should create set from various types", ()=>{
         let a = new CuteSet([1, 2, 3]);
         assert(a.toString() === "1 2 3")
+
+
     });
+
+
+    it("Should create set from various types", ()=>{
+        let a = CuteSet.fromString("hello world", "");
+        assert(a.toString() === "h e l o   w r d")
+
+
+    });
+
+
+    it("Should create set from string", ()=>{
+        let a = CuteSet.fromString("Hello world", " ");
+        assert(a.toString() === "Hello world")
+    });
+
+
+    it("Should create set from various types", ()=>{
+        let a = new CuteSet("Boo");
+        assert(a.toString() === "Boo")
+    });
+
+    it("Should create set from various types", ()=>{
+        let a = new CuteSet(["one", "two", "two"]);
+        assert(a.toString() === "one two")
+    });
+
 
     it("Should create an empty set", ()=>{
         let a = new CuteSet();
@@ -27,10 +55,11 @@ describe("CuteSet",()=>{
         let a = new CuteSet();
         let b = new CuteSet(["hello", "world"]);
 
-        assert(a.union(b).toString() === "hello world")
-        assert(a.union([1, 2, 3]).toString() === "1 2 3")
-        assert(a.union([1, 2, 3]).union("boo1ooo1").toString() === "1 2 3 b o 1")
+        assert(a.union(b).toString() === "hello world");
+        assert(a.union([1, 2, 3]).toString() === "1 2 3");
+        assert(a.union([1, 2, 3]).union("boo1ooo1").toString() === "1 2 3 boo1ooo1");
         assert(a.union([1, 2, 3]).union(["boo1ooo1"]).toString() === "1 2 3 boo1ooo1")
+        assert(a.union([1, 2, 3]).union(CuteSet.fromString("boo1ooo1", "")).toString() === "1 2 3 b o 1")
     });
 
     it("returns 2 sets difference", ()=>{
@@ -75,8 +104,33 @@ describe("CuteSet",()=>{
     it("testing various inputs", ()=>{
         let a = new CuteSet(["1", "2", "3"]);
         let b = a.union(["2", "3", "4", "5"]);
-        let c = b.intersection("3489");
-        assert(c.toString() === "3 4")
+        assert(b.intersection("3489").toString() === "");
+        assert(b.intersection(CuteSet.fromString("3489", "")).toString() === "3 4")
+    });
+
+    it("testing various inputs", ()=>{
+        let a = CuteSet.fromString("1 4 5 4.6", " ", true);
+        a.print();
+        assert(a.toString() === "1 4 5 4.6");
+        assert(a.has(4.6));
+        assert(a.has(4))
+    });
+
+
+    it("Parsing inputs", ()=>{
+        let a = new CuteSet([1, 2, 3]).union([2, 3, 4, 5]);
+
+        //prints "1 2 3 4 5"
+        a.print();
+
+        a = a.union(new Set([6, 7]));
+        assert(a.toString() === "1 2 3 4 5 6 7")
+
+        let b = a.intersection([3, 4]);
+        assert(b.toString() === "3 4")
+
     })
+
+
 
 });

@@ -8,13 +8,40 @@ npm i --save cute-set
 
 ### API
 
+Require CuteSet library in your project:
+
 ```
 //Node.js
 const CuteSet = require("cute-set");
 
 ```
+___
 
-#### union(x)
+
+To create new instance of CuteSet you can use **constructor**  or static method **CuteSet.FromString()**
+#### constructor(input)
+```
+  let mySet = new CuteSet(input)
+```
+Constructor accepts following inputs:
+ - **No input** - empty CuteSet instance will be created.
+ - **Single number** - CuteSet instance with single element - the passed number will be created.
+ - **Single string** - unlike native JS Set library, CuteSet treats string as a single value, thus CuteSet instance with single element - the passed string will be created:
+ ```
+ let mySet = new CuteSet("abc"); //results in {"abc"}
+ ```
+ - **Array** - CuteSet instance with all array elements will be created (duplicates are obviously removed).
+
+#### *static* fromString(input, delimiter = " ", parseNumbers = false)
+Parses passed string and creates CuteSet instance.
+Delimiter is optional and by default it is one empty space.
+parseNumbers - for each element in string parseFloat will be applied.
+See tests for examples
+
+---
+
+
+#### union(x) +
 Performs union operation on given set with set *x*
 
 #### join(x) +
@@ -52,36 +79,30 @@ returns true or false - whether given set is empty
 adds given x element to setTimeout
 
 
-#### toString(delimiter)   
+#### toString(delimiter = " ")   
 **returns** string representation of a given set;
 Delimiter is optional. By default it is 1 space;
 
 
-#### print(delimiter)   
+#### print(delimiter = " ")   
 **prints** string representation of a given set;
 Delimiter is optional. By default it is 1 space;
 
 #### toArray()   
 turns set into native Array and returns it
 
-#### toArray()   
-turns set into native Array and returns it
+---
 
-#### *static* fromString(input, delimiter)
-Creates new instance of CuteSet from passed strings.
-Delimiter is optional and by default it is one space.
+*Methods marked with **+** may take arrays, strings and native sets as input and turn it into CuteSet instance before processing. It is acceptable to do following:*
 
-
-
-*Methods marked with + may take arrays, strings and native sets as input and turn it into CuteSet instance before processing. It is acceptable to do following:*
 ```
-let a = new CuteSet(["1", "2", "3"]);
-let b = a.union(["2", "3", "4", "5"]);
-let c = b.intersection("3489");
+let a = new CuteSet([1, 2, 3]).union([2, 3, 4, 5]);
+
+//prints "1 2 3 4 5"
+a.print();
+
+let b = a.intersection([3, 4, 8, 9, 12]);
 
 //prints "3 4"
-//Notice that values are all strings. If they were numbers - it wouldn't work
-c.print();
-
-
+b.print()
 ```
