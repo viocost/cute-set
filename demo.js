@@ -34,12 +34,29 @@ c.remove(8);
 console.log(c.has(8));
 
 
-let x = 
-x.print();
 
 let y = CuteSet.fromString("a b c", " ");
 y.print();
 
 new CuteSet("abc").intersection("a1234").print()
 
-console.log(x.equal(y));
+
+
+
+let xxx = new CuteSet([1, 2, 3, 4, 5]);
+for(let i of xxx){
+    console.log(i)
+}
+
+let mySet = new CuteSet([1, 2, 3, 4, 5]);
+for (let val of mySet){
+    console.log(val);
+}
+
+
+mySet.forEach((val, i, arr)=>{ 
+    console.log(val);
+    console.log(i);
+    
+
+})

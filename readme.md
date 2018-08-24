@@ -17,6 +17,27 @@ const CuteSet = require("cute-set");
 ```
 ___
 
+#### CuteSet is iterable
+So this code will be perfectly valid:
+```
+  let mySet = new CuteSet([1, 2, 3, 4, 5]);
+  for (let val of mySet){
+    process(val);
+  }
+```
+or
+
+```
+  let mySet = new CuteSet([1, 2, 3, 4, 5]);
+  mySet.forEach((val, i, arr)=>{
+    process(val);
+  })
+```
+
+In the last example above **val** is the same as **i**, just like in native JS set, arr points to this CuteSet instance. Note, there is no acces by index, so mySet[0] will be undefined.
+
+---
+
 
 To create new instance of CuteSet you can use **constructor**  or static method **CuteSet.FromString()**
 #### constructor(input)
@@ -32,6 +53,8 @@ Constructor accepts following inputs:
  ```
  - **Array** - CuteSet instance with all array elements will be created (duplicates are obviously removed).
 
+ - **CuteSet instance** - In such case a copy of passed CuteSet instance will be created
+
 #### *static* fromString(input, delimiter = " ", parseNumbers = false)
 Parses passed string and creates CuteSet instance.
 Delimiter is optional and by default it is one empty space.
@@ -41,11 +64,13 @@ See tests for examples
 ---
 
 
+
+
 #### union(x) +
 Performs union operation on given set with set *x*
 
 #### join(x) +
-Same as union
+Alias of union
 
 #### difference(x) +
 Returns difference of given set with set *x*
@@ -53,7 +78,7 @@ Returns difference of given set with set *x*
     const res = set1.difference(set2)
   ```
 #### minus(x)  +
-Same as difference
+Alias of difference
 
 #### intersection(x)  +
 Returns intersection of given set with set *x*
@@ -77,8 +102,14 @@ returns set length
 returns true or false - whether given set is empty
 
 #### add(x)   
-adds given x element to setTimeout
+adds given x element to this set
 
+#### remove(x)   
+removes element x from this set
+returns true if element was deleted, or false if element was not found
+
+#### delete(x)   
+alias of remove
 
 #### toString(delimiter = " ")   
 **returns** string representation of a given set;
@@ -98,7 +129,6 @@ turns set into native Array and returns it
 
 ```
 let a = new CuteSet([1, 2, 3]).union([2, 3, 4, 5]); // Results in {1, 2, 3, 4, 5}
-
 
 let b = a.intersection([3, 4, 8, 9, 12]); // Results in {3, 4}
 

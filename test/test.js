@@ -150,4 +150,20 @@ describe("CuteSet",()=>{
     });
 
 
+    it("tests subset operation", ()=>{
+        let a = new CuteSet([1, 2, 3, 4]);
+        let b = new CuteSet(a);
+        assert(a.equal(b))
+    });
+
+    it("tests deletion", ()=>{
+        let a = new CuteSet([1, 2, 3, 4]);
+        assert(a.delete(1));
+        assert(!a.delete(1))
+        assert(a.remove(2));
+        assert(!a.remove(1))
+    });
+
+
+
 });
