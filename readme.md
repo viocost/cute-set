@@ -62,9 +62,10 @@ Returns intersection of given set with set *x*
 Returns symmetric difference of given set with set *x*
 
 #### equal(x)  +
-Returns true or false - whether given set is equal to x
+Returns true or false - whether given set is equal to set *x*
 
-
+#### subsetOf(x)  +
+Returns true or false - whether given set is subset of set *x*
 
 #### has(x)   
 Returns true or false - whether given set contains element x
@@ -96,13 +97,11 @@ turns set into native Array and returns it
 *Methods marked with **+** may take arrays, strings and native sets as input and turn it into CuteSet instance before processing. It is acceptable to do following:*
 
 ```
-let a = new CuteSet([1, 2, 3]).union([2, 3, 4, 5]);
+let a = new CuteSet([1, 2, 3]).union([2, 3, 4, 5]); // Results in {1, 2, 3, 4, 5}
 
-//prints "1 2 3 4 5"
-a.print();
 
-let b = a.intersection([3, 4, 8, 9, 12]);
+let b = a.intersection([3, 4, 8, 9, 12]); // Results in {3, 4}
 
-//prints "3 4"
-b.print()
+b.subsetOf([1, 3, 4, 5, 67]) // true
+
 ```

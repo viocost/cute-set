@@ -132,5 +132,22 @@ describe("CuteSet",()=>{
     })
 
 
+    it("tests equal function", ()=>{
+        let a = new CuteSet([1, 2, 3, 4]);
+        assert(a.equal([1, 2, 3, 4]));
+        assert(!a.equal([1, 2, 3]));
+        assert(!a.equal(["1", "2", "3", "4"]));
+
+        assert(new CuteSet().equal(new CuteSet()))
+    });
+
+    it("tests subset operation", ()=>{
+        let a = new CuteSet([1, 2, 3, 4]);
+        assert(a.subsetOf([1, 2, 3, 4, 5]));
+        assert(!a.subsetOf([1, 2, 4, 5]));
+        assert(new CuteSet().subsetOf(new CuteSet()));
+        assert(new CuteSet("").subsetOf(new CuteSet("")));
+    });
+
 
 });

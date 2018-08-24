@@ -27,6 +27,9 @@
   "homepage": "https://github.com/viocost/SSet#readme",
   "keywords": [
     "set",
-    "cute-set"
+    "cute-set",
+    "subset",
+    "union",
+    "intersection"
   ]
 }
