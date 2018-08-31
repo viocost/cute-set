@@ -1,4 +1,5 @@
 const CuteSet = require("./lib/CuteSet.js");
+const { PerformanceObserver, performance } = require('perf_hooks');
 
 let a = new CuteSet([1, 2, 3]);
 
@@ -54,9 +55,22 @@ for (let val of mySet){
 }
 
 
-mySet.forEach((val, i, arr)=>{ 
-    console.log(val);
-    console.log(i);
-    
+let factorial = (n)=>{
+    if (n<0){throw "number must be positive!"}
+    else if(n<2){return 1}
+    else{
+        let res = n;
+        do{
+            n--;
+            res *= n;
+        }while(n>1);
+        return res
+    }
+};
 
-})
+a = new CuteSet([1, 2, 3]);
+b = a.permutations();
+console.log("Printing all permutations");
+b.print("\n");
+console.log("Size " + b.size()+ " ref: " + factorial(a.size()));
+
