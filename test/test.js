@@ -164,6 +164,12 @@ describe("CuteSet",()=>{
         assert(!a.remove(1))
     });
 
+    it("tests complement", ()=>{
+        let a = new CuteSet([1, 2, 3]);
+        assert(a.complement([2, 3, 4]).toString() === "4");
+        assert(a.complement([]).toString() === "");
+        assert(a.complement([5, 6, 7]).toString() === "5 6 7")
+    })
 
 
 });

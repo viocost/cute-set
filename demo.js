@@ -68,9 +68,11 @@ let factorial = (n)=>{
     }
 };
 
-a = new CuteSet([1, 2, 3]);
+a = new CuteSet([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 b = a.permutations();
 console.log("Printing all permutations");
 b.print("\n");
 console.log("Size " + b.size()+ " ref: " + factorial(a.size()));
+
+
 

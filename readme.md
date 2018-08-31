@@ -62,8 +62,21 @@ parseNumbers - for each element in string parseFloat will be applied.
 See tests for examples
 
 ---
+#### complement(x) +
+Given "universe" *x* returns *self* complement *x*
+or basically *x* difference *self*
+
+#### powerSet()
+Generates and returns a *set* of all subsets of itself.
+Length of self is limited by 21 elements
+
+#### permutations()
+Generates and returns a *set* of all permutations of itself
+Length of self is limited by 9 elements
 
 
+#### sort(fn)
+Sorts internal order of elements in javascript Array.prototype.sort() fashion. It can be used with function expressions (and closures). For reference see [official MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
 
 #### union(x) +

@@ -30,6 +30,10 @@
     "cute-set",
     "subset",
     "union",
-    "intersection"
+    "intersection",
+    "compliment",
+    "combinations",
+    "permutations",
+    "power"
   ]
 }
