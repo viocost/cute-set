@@ -66,6 +66,18 @@ See tests for examples
 Given "universe" *x* returns *self* complement *x*
 or basically *x* difference *self*
 
+#### subsetGenerator()
+Returns a subset generator. 
+Call generator.next() to get next subset.
+Generator will deplete once all subsets are yielded.
+No length limit.
+
+#### permutationGenerator()
+Returns permutation generator.
+Call generator.next() to get next permutation.
+Generator will deplete once all permutations are yielded.
+No length limit.
+
 #### powerSet()
 Generates and returns a *set* of all subsets of itself.
 Length of self is limited by 21 elements
