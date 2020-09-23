@@ -9,10 +9,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^7.1.2"
+    "mocha": "^8.1.3"
   },
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mochanpm "
+    "test": "node ./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
