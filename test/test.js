@@ -6,8 +6,6 @@ describe("CuteSet",()=>{
     it("Should create set from various types", ()=>{
         let a = new CuteSet([1, 2, 3]);
         assert(a.toString() === "1 2 3")
-
-
     });
 
 

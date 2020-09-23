@@ -1,6 +1,11 @@
 # CuteSet
 This is minimalistic es6 implementation of set and its basic operations, based on native javascript Set.
 
+### Version 1.0.11 changes
+- Added filter map reduce functionality, works the same way as array.
+- length and size are no longer functions, so instead of doing `mySet.length()`
+  do `mySet.length`
+
 ### Installation
 ```
 npm i --save cute-set
