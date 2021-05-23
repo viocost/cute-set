@@ -206,5 +206,48 @@ describe("CuteSet",()=>{
         assert(a.complement([5, 6, 7]).toString() === "5 6 7")
     })
 
+    it("tests forEach iteration", ()=>{
+        const res = new CuteSet()
+        new CuteSet([1, 2, 3]).forEach(item=>res.add(item))
+        new CuteSet([1, 2, 3]).forEach(item=>undefined)
 
+        assert(res.has(1))
+        assert(res.has(2))
+        assert(res.has(3))
+    })
+
+    it("Tests map", ()=>{
+        const res = new CuteSet([1, 2, 3]).map(item=>item * item)
+        assert(res.equal([1, 4, 9]))
+        assert (res instanceof CuteSet)
+    })
+
+    it("Tests filter", ()=>{
+        const res = new CuteSet([1, 2, 3]).filter(item=>item % 2 === 0)
+        assert(res.equal(2))
+    })
+
+    it("Tests reduce", ()=>{
+        const res = new CuteSet([1, 2, 3]).reduce((acc, item)=>acc+item, 10)
+        assert(res === 16)
+    })
+
+    it("Tests power set", ()=>{
+
+        const set = new CuteSet([1, 2 ]).powerSet()
+        assert(set.length === 4)
+
+    })
+
+    it("Tests permutations", ()=>{
+        const set = new CuteSet([1, 2, 3]).permutations()
+        assert(set.length === 6)
+    })
+
+    it("Should test empty function", ()=>{
+        const s = new CuteSet()
+        assert (s.empty())
+        s.add(1)
+        assert (!s.empty())
+    })
 });
