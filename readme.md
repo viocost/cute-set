@@ -1,5 +1,6 @@
-![Build badge](https://travis-ci.com/viocost/cute-set.svg?branch=master)
 # CuteSet 
+![Build badge](https://travis-ci.com/viocost/cute-set.svg?branch=master)
+
 This is minimalistic es6 implementation of set and its basic operations, based on native javascript Set.
 
 ### Version 1.0.11 changes
