@@ -139,6 +139,33 @@ describe("CuteSet",()=>{
 
     })
 
+    it("Should difference with an object", ()=>{
+        const a = {}
+        const s1 = new CuteSet([1, 2, 3, a])
+        const s2 = s1.minus(a)
+        const s3 = s1.minus(2)
+        const ref = new CuteSet([1, 2, 3])
+        const ref2 = new CuteSet([1, a, 3])
+        assert(ref.equal(s2))
+        assert(ref2.equal(s3))
+    })
+
+    
+    it("Should intersect with an object", ()=>{
+        const a = {}
+        const s1 = new CuteSet([1, 2, 3, a])
+        const s2 = s1.intersection(a)
+        const ref = new CuteSet(a)
+        assert(ref.equal(s2))
+    })
+
+    it("Should join with an object", ()=>{
+        const a = {}
+        const s1 = new CuteSet([1, 2, 3])
+        const s2 = s1.union(a)
+        const ref = new CuteSet([1, 2, 3, a])
+        assert(ref.equal(s2))
+    })
 
     it("tests equal function", ()=>{
         let a = new CuteSet([1, 2, 3, 4]);

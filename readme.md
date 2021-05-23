@@ -49,16 +49,12 @@ To create new instance of CuteSet you can use **constructor**  or static method 
 ```
   let mySet = new CuteSet(input)
 ```
-Constructor accepts following inputs:
- - **No input** - empty CuteSet instance will be created.
- - **Single number** - CuteSet instance with single element - the passed number will be created.
- - **Single string** - unlike native JS Set library, CuteSet treats string as a single value, thus CuteSet instance with single element - the passed string will be created:
- ```
- let mySet = new CuteSet("abc"); //results in {"abc"}
- ```
- - **Array** - CuteSet instance with all array elements will be created (duplicates are obviously removed).
+V.2 Changes
+Input can be anything:
+**Single object, number or string** new CuteSet instance with that object returned
+**Array** new CuteSet instance with all elements of the array returned (duplicates obviously removed)
+**CuteSet instance** copy of CuteSet instance with be returned.
 
- - **CuteSet instance** - In such case a copy of passed CuteSet instance will be created
 
 #### *static* fromString(input, delimiter = " ", parseNumbers = false)
 Parses passed string and creates CuteSet instance.
@@ -155,12 +151,15 @@ turns set into native Array and returns it
 
 ---
 
-*Methods marked with **+** may take arrays, strings and native sets as input and turn it into CuteSet instance before processing. It is acceptable to do following:*
+*Methods marked with **+** may take any input as CuteSet constructor. 
+Passed input will be implicitly turned into a CuteSet instance before processing.
 
 ```
 let a = new CuteSet([1, 2, 3]).union([2, 3, 4, 5]); // Results in {1, 2, 3, 4, 5}
 
 let b = a.intersection([3, 4, 8, 9, 12]); // Results in {3, 4}
+let b = a.intersection(3); // Results in {3}
+let b = a.minus(3); // Results in {1, 2, 4, 5}
 
 b.subsetOf([1, 3, 4, 5, 67]) // true
 
