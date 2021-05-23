@@ -17,6 +17,19 @@ describe("CuteSet",()=>{
     });
 
 
+    it("Should create a set with empty string", ()=>{
+        let a = new CuteSet("");
+        assert(a.has(""))
+    })
+
+    it("Should create a set with an object", ()=>{
+        const a = {}
+        const set = new CuteSet(a)
+        assert(set.has(a))
+        assert(!set.has({}))
+    })
+
+
     it("Should create set from string", ()=>{
         let a = CuteSet.fromString("Hello world", " ");
         assert(a.toString() === "Hello world")
@@ -108,7 +121,6 @@ describe("CuteSet",()=>{
 
     it("testing various inputs", ()=>{
         let a = CuteSet.fromString("1 4 5 4.6", " ", true);
-        a.print();
         assert(a.toString() === "1 4 5 4.6");
         assert(a.has(4.6));
         assert(a.has(4))
@@ -119,8 +131,6 @@ describe("CuteSet",()=>{
         let a = new CuteSet([1, 2, 3]).union([2, 3, 4, 5]);
 
         //prints "1 2 3 4 5"
-        a.print();
-
         a = a.union(new Set([6, 7]));
         assert(a.toString() === "1 2 3 4 5 6 7")
 
