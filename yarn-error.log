@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarnpkg add --dev prettier-js
+  /usr/bin/node /usr/bin/yarnpkg add --dev @type/jest
 
 PATH: 
   /home/kostia/.sdkman/candidates/sbt/current/bin:/home/kostia/.sdkman/candidates/gradle/current/bin:/home/kostia/.local/bin:/home/kostia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/prettier-js: Not found
+  Error: https://registry.yarnpkg.com/@type%2fjest: Not found
       at Request.params.callback [as _callback] (/usr/share/nodejs/yarn/lib/util/request-manager.js:590:20)
       at Request.self.callback (/usr/share/nodejs/request/request.js:185:22)
       at Request.emit (events.js:314:20)
@@ -39,9 +39,11 @@ npm manifest:
     "devDependencies": {
       "codecov": "^3.8.2",
       "jest": "^26.6.3",
+      "prettier": "^2.3.2",
       "typescript": "^4.3.5"
     },
     "scripts": {
+      "build": "tsc",
       "test": "jest"
     },
     "jest": {
@@ -2901,6 +2903,11 @@ Lockfile:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
     integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
+  
+  prettier@^2.3.2:
+    version "2.3.2"
+    resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
+    integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
   
   pretty-format@^26.6.2:
     version "26.6.2"

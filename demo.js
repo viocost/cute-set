@@ -1,5 +1,5 @@
 const CuteSet = require("./lib/CuteSet.js");
-const { PerformanceObserver, performance } = require('perf_hooks');
+const { PerformanceObserver, performance } = require("perf_hooks");
 
 let a = new CuteSet([1, 2, 3]);
 
@@ -13,7 +13,6 @@ let b = a.minus([2, 3]);
 
 //Prints "1"
 b.print();
-
 
 b = b.union([7, 8, 15, 4, 5, 6]);
 //Prints "1 7 8 15 4 5 6"
@@ -34,45 +33,38 @@ c.remove(8);
 //false
 console.log(c.has(8));
 
-
-
 let y = CuteSet.fromString("a b c", " ");
 y.print();
 
-new CuteSet("abc").intersection("a1234").print()
-
-
-
+new CuteSet("abc").intersection("a1234").print();
 
 let xxx = new CuteSet([1, 2, 3, 4, 5]);
-for(let i of xxx){
-    console.log(i)
+for (let i of xxx) {
+  console.log(i);
 }
 
 let mySet = new CuteSet([1, 2, 3, 4, 5]);
-for (let val of mySet){
-    console.log(val);
+for (let val of mySet) {
+  console.log(val);
 }
 
-
-let factorial = (n)=>{
-    if (n<0){throw "number must be positive!"}
-    else if(n<2){return 1}
-    else{
-        let res = n;
-        do{
-            n--;
-            res *= n;
-        }while(n>1);
-        return res
-    }
+let factorial = (n) => {
+  if (n < 0) {
+    throw "number must be positive!";
+  } else if (n < 2) {
+    return 1;
+  } else {
+    let res = n;
+    do {
+      n--;
+      res *= n;
+    } while (n > 1);
+    return res;
+  }
 };
 
 a = new CuteSet([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 b = a.permutations();
 console.log("Printing all permutations");
 b.print("\n");
-console.log("Size " + b.size()+ " ref: " + factorial(a.size()));
-
-
-
+console.log("Size " + b.size() + " ref: " + factorial(a.size()));

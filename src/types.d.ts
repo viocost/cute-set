@@ -1,6 +1,6 @@
 export interface ICuteSet<T> {
-  forEach(cb: Function): void;
-  filter(cb: Function): ICuteSet<T>;
+  forEach(cb: Function, thisArg?: any): void;
+  filter(cb: Function, thisArg?: any): ICuteSet<T>;
   map(cb: Function): ICuteSet<T>;
   reduce(cb: Function, initialValue?: any): any;
   union<TInput = any>(input: TInput): ICuteSet<T | TInput>;
@@ -12,8 +12,8 @@ export interface ICuteSet<T> {
   isSubsetOf<TInput = any>(input: TInput): boolean;
   sort(fn: Function): ICuteSet<T>;
   powerSet(): ICuteSet<T>;
-  subsets(): IterableIterator<ICuteSet<T>>;
-  permutations(): IterableIterator<ICuteSet<T>>;
+  subsets(): Generator<CuteSet<T[]>, void, unknown>;
+  permutations(): Generator<CuteSet<T[]>, void, unknown>;
   has(candidate: T): boolean;
   add(candidate: T): void;
   remove(candidate: T): void;
@@ -21,4 +21,8 @@ export interface ICuteSet<T> {
   toString(delimiter: string): string;
 
   print(delimiter: string): void;
+}
+
+export interface ICallback {
+  (value, index, array): ICuteSet;
 }
