@@ -41,6 +41,41 @@ describe(CuteSet.name, () => {
   describe("Union", () => {
     const s1 = new CuteSet([1, 2, 3]);
     const s2 = new CuteSet([2, 3, 4, 5]);
-    expect(s1.union(s2)).toEqual(new CuteSet([1, 2, 3, 4, 5]));
+
+    const s3 = new CuteSet("hello");
+    const s4 = new CuteSet("world");
+    it("Should union 2 sets of integers", () => {
+      expect(s1.union(s2)).toEqual(new CuteSet([1, 2, 3, 4, 5]));
+    });
+
+    it("Should uniont sets of strings", () => {
+      expect(s3.union(s4)).toEqual(new CuteSet(["hello", "world"]));
+    });
+
+    it("Should union sets of various types", () => {
+      expect(s1.union(s2).union(s3)).toEqual(
+        new CuteSet([1, 2, 3, 4, 5, "hello"])
+      );
+    });
+
+    expect(s1.union(s2, s3)).toEqual(new CuteSet([1, 2, 3, 4, 5, "hello"]));
+
+    expect(s1.union(s2, "foo")).toEqual(new CuteSet([1, 2, 3, 4, 5, "foo"]));
+    expect(new CuteSet().union(1, "bar", {}, {}, [])).toEqual(
+      new CuteSet([1, "bar", {}, {}])
+    );
+  });
+
+  describe("Minus", () => {
+    const s1 = new CuteSet([1, 2, 3]);
+    const s2 = new CuteSet([2, 3, 4, 5]);
+
+    it("Should return difference of 2 sets", () => {
+      expect(s1.minus(s2)).toEqual(new CuteSet([1]));
+    });
+
+    it("Should return difference of multiple sets", () => {
+      expect(s1.minus(3, 1)).toEqual(new CuteSet([2]));
+    });
   });
 });
