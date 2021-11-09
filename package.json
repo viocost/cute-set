@@ -9,9 +9,12 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "@types/node": "^16.11.6",
     "codecov": "^3.8.2",
-    "jest": "^26.6.3",
+    "jest": "^27.3.1",
     "prettier": "^2.3.2",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
     "typescript": "^4.3.5"
   },
   "scripts": {
@@ -20,7 +23,13 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "testEnvironment": "node",
+    "testRegex": "\\.spec.ts$",
+    "transform": {
+      "^.+\\.(t)s$": "ts-jest"
+    }
+
   },
   "repository": {
     "type": "git",
