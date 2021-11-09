@@ -17,13 +17,30 @@ export default class CuteSet<T = any> implements ICuteSet {
     this._set = new Set(asArray(input));
   }
 
-  union(input: CuteSetInput<T>): ICuteSet<T> {
-    const set = asCuteSet<T>(input);
-    return new CuteSet<T>([...this.toArray(), ...set.toArray()]);
+  union(...args: CuteSetInput<T>[]): ICuteSet<T> {
+    return args.reduce((acc: ICuteSet<T>, i) => acc._unionOne(i), this);
   }
 
-  minus(input: CuteSetInput): ICuteSet<T> {
-    return new CuteSet(this.toArray().filter((x) => !asCuteSet(input).has(x)));
+  _unionOne(input: CuteSetInput<T>): ICuteSet<T> {
+    return new CuteSet<T>([...this, ...asCuteSet<T>(input)]);
+  }
+
+  minus(...args: CuteSetInput<T>[]): ICuteSet<T> {
+    return args.reduce((acc: ICuteSet<T>, i) => acc._minusOne(i), this);
+  }
+
+  _minusOne(input: CuteSetInput): ICuteSet<T> {
+    const inputSet = asCuteSet<T>(input);
+    return new CuteSet<T>(this.toArray().filter((x) => !inputSet.has(x)));
+  }
+
+  intersection(...args: CuteSetInput<T>[]): ICuteSet<T> {
+    return args.reduce((acc: ICuteSet<T>, i) => acc._intersectionOne(i), this);
+  }
+
+  _intersectionOne(input: CuteSetInput<T>): ICuteSet<T> {
+    const inputSet = asCuteSet<T>(input);
+    return new CuteSet<T>(this.toArray().filter((item) => inputSet.has(item)));
   }
 
   toArray(): Array<T> {
