@@ -39,12 +39,8 @@ export interface ICuteSet<T = any> {
   private _intersectionOne(input: CuteSetInput<T>): ICuteSet<T>; //
   /////////////////////////////////////////////////////////////////////////////
   // reduce(cb: Function, initialValue?: any): any;                          //
-  // isSubsetOf<CuteSetInput = any>(input: CuteSetInput): boolean;                       //
   // sort(fn: Function): ICuteSet<T>;                                        //
   // powerSet(): ICuteSet<T>;                                                //
-  // add(candidate: T): void;                                                //
-  // remove(candidate: T): void;                                             //
-  // toArray(): Array<T>;                                                    //
   // toString(delimiter: string): string;                                    //
   //                                                                         //
   // print(delimiter: string): void;                                         //

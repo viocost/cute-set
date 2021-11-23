@@ -134,4 +134,69 @@ describe(CuteSet.name, () => {
       expect(permutations[5].toArray()).toEqual([3, 2, 1]);
     });
   });
+
+  describe("Is equal", () => {
+    it("Should correctly identify equal sets", () => {
+      expect(new CuteSet([1, 2, 3]).isEqual([3, 2, 1])).toBeTruthy();
+      expect(new CuteSet([1, 2, 3]).isEqual(new Set([3, 2, 1]))).toBeTruthy();
+      expect(new CuteSet().isEqual(new Set())).toBeTruthy();
+      expect(new CuteSet().isEqual()).toBeTruthy();
+      expect(new CuteSet().isEqual(1)).toBeFalsy();
+      expect(new CuteSet([1, 2, 3]).isEqual([2, 3])).toBeFalsy();
+      expect(new CuteSet([1, 2, 3]).isEqual([1, 2, 3, 4])).toBeFalsy();
+      expect(
+        new CuteSet([1, 2, 3]).isEqual(new CuteSet([1, 2, 3, 4]))
+      ).toBeFalsy();
+    });
+  });
+
+  describe("Is disjoint", () => {
+    it("Should correctly identify disjoint set", () => {
+      expect(new CuteSet([1, 2, 3]).isDisjoint([3, 2, 1])).toBeFalsy();
+      expect(new CuteSet([1, 2, 3]).isDisjoint(new Set())).toBeTruthy();
+
+      expect(new CuteSet([1, 2, 3]).isDisjoint()).toBeTruthy();
+      expect(new CuteSet([1, 2, 3]).isDisjoint([5, 6, 7])).toBeTruthy();
+      expect(new CuteSet([1, 2, 3, 4]).isDisjoint([4, 5, 6, 7])).toBeFalsy();
+    });
+  });
+
+  describe("Add, delete, has", () => {
+    it("Should add element to a set", () => {
+      const s = new CuteSet();
+      s.add(2);
+      s.add(3);
+      expect(s.toArray()).toEqual([2, 3]);
+    });
+
+    it("Should delete element from set", () => {
+      const s = new CuteSet([1, 2, 3]);
+      expect(s.toArray()).toEqual([1, 2, 3]);
+      s.delete(2);
+      expect(s.toArray()).toEqual([1, 3]);
+    });
+
+    it("Should identify if set contains an element", () => {
+      const s = new CuteSet([1, 2, 3]);
+      expect(s.has(2)).toBeTruthy();
+      expect(s.has(25)).toBeFalsy();
+    });
+  });
+
+  describe("Is subset of", () => {
+    it("Should correctly identify if current set is subset of passed set", () => {
+      const s = new CuteSet([1, 2, 3]);
+      expect(s.isSubsetOf([0, 1, 2, 3, 4])).toBeTruthy();
+      expect(s.isSubsetOf([0, 1, 3, 4])).toBeFalsy();
+      expect(new CuteSet().isSubsetOf([])).toBeTruthy();
+    });
+  });
+
+  describe("Symmetric difference", () => {
+    const s1 = new CuteSet([1, 2, 3, 15, 16]);
+    const s2 = new CuteSet([1, 2, 3, 4, 5]);
+    it("Should return correct symmetric difference of passed set", () => {
+      expect(s1.symmetricDifference(s2).isEqual([15, 16, 4, 5])).toBeTruthy();
+    });
+  });
 });
