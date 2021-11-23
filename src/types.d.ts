@@ -5,6 +5,32 @@ export interface ICuteSet<T = any> {
   has(candidate: T): boolean; //
   intersection(input: CuteSetInput<T>): ICuteSet<T>; //
   minus(input: CuteSetInput<T>): ICuteSet<T>; //
+  raw(): Set<T>;
+
+  complement(universalSet: CuteSetInput<T>): ICuteSet<T>; //
+  symmetricDifference(input: CuteSetInput<T>): ICuteSet<T>; //
+
+  isEqual(input: CuteSetInput<T>): boolean;
+  isSubsetOf(input: CuteSetInput<T>): boolean;
+  isDisjoint(input: CuteSetInput<T>): boolean;
+
+  map(cb: (value: T, index: number, array: T[]) => T[]): ICuteSet<T>;
+  filter(cb: (value: T, index: number, array: T[]) => T[]): ICuteSet<T>;
+  reduce(
+    cb: (
+      previousValue: unknown,
+      currentValue: T,
+      index: number,
+      array: T[]
+    ) => unknown,
+    initial?: unknown
+  ): unknown;
+
+  add(itme: T): void;
+  delete(itme: T): void;
+
+  subsets(): Generator<CuteSet<T>, void, unknown>;
+  permutations(): Generator<CuteSet<T>, void, unknown>;
 
   readonly length: number;
   readonly [n: number]: T;
@@ -12,19 +38,10 @@ export interface ICuteSet<T = any> {
   private _minusOne(input: CuteSetInput<T>): ICuteSet<T>;
   private _intersectionOne(input: CuteSetInput<T>): ICuteSet<T>; //
   /////////////////////////////////////////////////////////////////////////////
-  // forEach(cb: Function, thisArg?: any): void;                             //
-  // filter(cb: Function, thisArg?: any): ICuteSet<T>;                       //
-  // map(cb: Function): ICuteSet<T>;                                         //
   // reduce(cb: Function, initialValue?: any): any;                          //
-  // union<CuteSetInput = any>(input: CuteSetInput): ICuteSet<T | CuteSetInput>;               //
-  // complement<CuteSetInput = any>(input: CuteSetInput): ICuteSet<T | CuteSetInput>;          //
-  // symmetricDifference<CuteSetInput = any>(input: CuteSetInput): ICuteSet<T | CuteSetInput>; //
-  // isEqual<CuteSetInput = any>(input: CuteSetInput): boolean;                          //
   // isSubsetOf<CuteSetInput = any>(input: CuteSetInput): boolean;                       //
   // sort(fn: Function): ICuteSet<T>;                                        //
   // powerSet(): ICuteSet<T>;                                                //
-  // subsets(): Generator<CuteSet<T[]>, void, unknown>;                      //
-  // permutations(): Generator<CuteSet<T[]>, void, unknown>;                 //
   // add(candidate: T): void;                                                //
   // remove(candidate: T): void;                                             //
   // toArray(): Array<T>;                                                    //
