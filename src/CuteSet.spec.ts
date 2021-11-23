@@ -78,4 +78,60 @@ describe(CuteSet.name, () => {
       expect(s1.minus(3, 1)).toEqual(new CuteSet([2]));
     });
   });
+
+  describe("Intersection", () => {
+    const s1 = new CuteSet([1, 2, 3]);
+    const s2 = new CuteSet([2, 3, 4, 5]);
+    const s3 = new CuteSet([3, 4]);
+
+    it("Should return intersection of multiple sets", () => {
+      expect(s1.intersection(s2, s3).toArray()).toEqual([3]);
+      expect(s1.intersection(s2).toArray()).toEqual([2, 3]);
+      expect(s1.intersection().toArray()).toEqual([]);
+
+      expect(s1.intersection(s2, s3, 3).toArray()).toEqual([3]);
+      expect(
+        s1.intersection(s2, [1, 2, 3, 4, 5, 6], new Set([2, 3])).toArray()
+      ).toEqual([2, 3]);
+    });
+  });
+
+  describe("Complement", () => {
+    const s1 = new CuteSet([1, 2, 3]);
+    const s2 = new CuteSet([1, 2, 3, 4, 5]);
+
+    it("Should return a complement of a passed set", () => {
+      expect(s1.complement(s2).toArray()).toEqual([4, 5]);
+    });
+  });
+
+  describe("Subsets", () => {
+    const s = new CuteSet([1, 2, 3]);
+    const combinations = [...s.subsets()];
+    it("Should derive all subsets of a set", () => {
+      expect(combinations.length).toBe(8);
+      expect(combinations[0].toArray()).toEqual([1, 2, 3]);
+      expect(combinations[1].toArray()).toEqual([1, 2]);
+      expect(combinations[2].toArray()).toEqual([1, 3]);
+      expect(combinations[3].toArray()).toEqual([1]);
+      expect(combinations[4].toArray()).toEqual([2, 3]);
+      expect(combinations[5].toArray()).toEqual([2]);
+      expect(combinations[6].toArray()).toEqual([3]);
+      expect(combinations[7].toArray()).toEqual([]);
+    });
+  });
+
+  describe("Permutations", () => {
+    const s = new CuteSet([1, 2, 3]);
+    const permutations = [...s.permutations()];
+    it("Should derive all permutations of a set", () => {
+      expect(permutations.length).toBe(6);
+      expect(permutations[0].toArray()).toEqual([1, 2, 3]);
+      expect(permutations[1].toArray()).toEqual([2, 1, 3]);
+      expect(permutations[2].toArray()).toEqual([3, 1, 2]);
+      expect(permutations[3].toArray()).toEqual([1, 3, 2]);
+      expect(permutations[4].toArray()).toEqual([2, 3, 1]);
+      expect(permutations[5].toArray()).toEqual([3, 2, 1]);
+    });
+  });
 });
