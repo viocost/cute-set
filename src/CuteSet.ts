@@ -72,8 +72,13 @@ export default class CuteSet<T = any> implements ICuteSet {
     return this._set.has(candidate);
   }
 
-  isEqual(candidate: CuteSetInput<T>) {
+  isEqual(candidate?: CuteSetInput<T>) {
     const normalized = asCuteSet(candidate);
+
+    if (this.length === 0 && normalized.length === 0) {
+      return true;
+    }
+
     return this.reduce(
       (acc, item) => acc && normalized.has(item),
       normalized.length === this.length
@@ -88,8 +93,13 @@ export default class CuteSet<T = any> implements ICuteSet {
     ) as boolean;
   }
 
-  isDisjoint(candidate: CuteSetInput<T>) {
+  isDisjoint(candidate?: CuteSetInput<T>) {
     const normalized = asCuteSet(candidate);
+
+    if (this.length === 0 || normalized.length === 0) {
+      return true;
+    }
+
     return this.reduce(
       (res, item) => res && !normalized.has(item),
       true
