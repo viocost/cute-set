@@ -7,3 +7,5 @@ before_script:
   - yarn build
 script:
   - yarn test
+node_js:
+  15
