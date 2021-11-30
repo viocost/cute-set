@@ -1,5 +1,7 @@
 language: node_js
 before_install:
+  - nvm install 15
+  - nvm use 15
   - npm install --global yarn
   - yarn global add codecov
 before_script:
