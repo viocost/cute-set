@@ -199,4 +199,36 @@ describe(CuteSet.name, () => {
       expect(s1.symmetricDifference(s2).isEqual([15, 16, 4, 5])).toBeTruthy();
     });
   });
+
+  describe("Map, filter, reduce", () => {
+    const s1 = new CuteSet([1, "dog", {}, []]);
+    it("Should filter the set", () => {
+      expect(s1.filter((item) => Array.isArray(item)).toArray()).toEqual([[]]);
+      expect(
+        s1.filter((item) => Array.isArray(item)) instanceof CuteSet
+      ).toBeTruthy();
+      expect(s1.filter((item) => typeof item === "string").toArray()).toEqual([
+        "dog",
+      ]);
+    });
+
+    it("Should map the set", () => {
+      const s1 = new CuteSet([1, 2, 3, 4]);
+
+      expect(s1.map((el) => el + 1).toArray()).toEqual([2, 3, 4, 5]);
+      expect(s1.map((el) => el + 1) instanceof CuteSet).toBeTruthy();
+    });
+
+    it("Should reduce the set to a value", () => {
+      const s1 = new CuteSet([1, 2, 3, 4]);
+
+      expect(s1.reduce((acc, item) => acc + item)).toBe(10);
+    });
+
+    it("Should reduce the set to a value of another type", () => {
+      const s1 = new CuteSet([1, 2, 3, 4]);
+
+      expect(s1.reduce((acc, item) => acc + item, "9")).toBe("91234");
+    });
+  });
 });
