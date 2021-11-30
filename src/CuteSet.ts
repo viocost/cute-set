@@ -192,6 +192,14 @@ export default class CuteSet<T = any> implements ICuteSet {
   raw(): Set<T> {
     return this._set;
   }
+
+  toString(delimiter = "") {
+    return this.toArray().join(delimiter);
+  }
+
+  print() {
+    console.log(this.toString(","));
+  }
 }
 
 export function asArray<T = any>(thing?: T | ArrayLike<T>): Array<T> {

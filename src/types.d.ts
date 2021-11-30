@@ -53,19 +53,13 @@ export interface ICuteSet<T = any> {
   subsets(): Generator<CuteSet<T>, void, unknown>;
   permutations(): Generator<CuteSet<T>, void, unknown>;
 
+  toString(delimiter: string): string;
+
   readonly length: number;
   readonly [n: number]: T;
   private _unionOne(input: CuteSetInput<T>): ICuteSet<T>;
   private _minusOne(input: CuteSetInput<T>): ICuteSet<T>;
   private _intersectionOne(input: CuteSetInput<T>): ICuteSet<T>; //
-  /////////////////////////////////////////////////////////////////////////////
-  // reduce(cb: Function, initialValue?: any): any;                          //
-  // sort(fn: Function): ICuteSet<T>;                                        //
-  // powerSet(): ICuteSet<T>;                                                //
-  // toString(delimiter: string): string;                                    //
-  //                                                                         //
-  // print(delimiter: string): void;                                         //
-  /////////////////////////////////////////////////////////////////////////////
 }
 
 export type CuteSetInput<T = any> = T | ICuteSet<T> | ArrayLike<T>;
