@@ -79,7 +79,7 @@ export default class CuteSet<T = any> implements ICuteSet {
       return true;
     }
 
-    return this.reduce(
+    return this.toArray().reduce(
       (acc, item) => acc && normalized.has(item),
       normalized.length === this.length
     ) as boolean;
@@ -101,29 +101,36 @@ export default class CuteSet<T = any> implements ICuteSet {
     }
 
     return this.reduce(
-      (res, item) => res && !normalized.has(item),
-      true
+      (res, item) => (res as unknown as boolean) && !normalized.has(item),
+      true as boolean
     ) as boolean;
   }
 
-  map(cb: (value: T, index: number, array: T[]) => T[]): ICuteSet<T> {
-    return new CuteSet<T>(this.toArray().map(cb));
+  map<U>(cb: (value: T, index: number, array: T[]) => U, thisArg?: any) {
+    return asCuteSet<U>(this.toArray().map(cb, thisArg));
   }
 
-  filter(cb: (value: T, index: number, array: T[]) => T[]) {
-    return new CuteSet<T>(this.toArray().filter(cb));
+  reduce<U = T>(
+    cb: (previousValue: U, currentValue: T, index: number, array: T[]) => U,
+    initialValue?: U
+  ) {
+    return initialValue
+      ? this.toArray().reduce<U>(cb, initialValue as U)
+      : this.toArray().reduce(
+          cb as unknown as (
+            previousValue: T,
+            currentValue: T,
+            index: number,
+            array: T[]
+          ) => T
+        );
   }
 
-  reduce(
-    cb: (
-      previousValue: unknown,
-      currentValue: T,
-      index: number,
-      array: T[]
-    ) => unknown,
-    initial?: unknown
-  ): unknown {
-    return this.toArray().reduce(cb, initial);
+  filter(
+    predicate: (value: T, index: number, array: T[]) => unknown,
+    thisArg?: any
+  ) {
+    return new CuteSet<T>(this.toArray().filter(predicate, thisArg));
   }
 
   *subsets() {

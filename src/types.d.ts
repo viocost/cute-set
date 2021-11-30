@@ -14,17 +14,38 @@ export interface ICuteSet<T = any> {
   isSubsetOf(input: CuteSetInput<T>): boolean;
   isDisjoint(input: CuteSetInput<T>): boolean;
 
-  map(cb: (value: T, index: number, array: T[]) => T[]): ICuteSet<T>;
-  filter(cb: (value: T, index: number, array: T[]) => T[]): ICuteSet<T>;
+  map<U>(
+    callbackfn: (value: T, index: number, array: T[]) => U,
+    thisArg?: any
+  ): ICuteSet<U>;
+
+  filter<S extends T>(
+    predicate: (value: T, index: number, array: T[]) => value is S,
+    thisArg?: any
+  ): ICuteSet<S>;
+
+  filter(
+    predicate: (value: T, index: number, array: T[]) => unknown,
+    thisArg?: any
+  ): ICuteSet<T>;
+
   reduce(
-    cb: (
-      previousValue: unknown,
+    callbackfn: (
+      previousValue: T,
       currentValue: T,
-      index: number,
+      currentIndex: number,
       array: T[]
-    ) => unknown,
-    initial?: unknown
-  ): unknown;
+    ) => T
+  ): T;
+  reduce<U = T>(
+    callbackfn: (
+      previousValue: U,
+      currentValue: T,
+      currentIndex: number,
+      array: T[]
+    ) => U,
+    initialValue: U
+  ): U;
 
   add(itme: T): void;
   delete(itme: T): void;
