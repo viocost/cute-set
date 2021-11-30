@@ -197,8 +197,8 @@ export default class CuteSet<T = any> implements ICuteSet {
     return this.toArray().join(delimiter);
   }
 
-  print() {
-    console.log(this.toString(","));
+  print(delimiter = ", ") {
+    console.log(this.toString(delimiter));
   }
 }
 
