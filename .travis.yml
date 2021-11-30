@@ -1,5 +1,6 @@
 language: typescript
 before_install:
+  - npm install --global yarn
   - yarn global add codecov
 before_script:
   - yarn setup
