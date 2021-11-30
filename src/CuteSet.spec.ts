@@ -231,4 +231,28 @@ describe(CuteSet.name, () => {
       expect(s1.reduce((acc, item) => acc + item, "9")).toBe("91234");
     });
   });
+
+  describe("toString, print", () => {
+    it("Should join set elements into a string", () => {
+      const s1 = new CuteSet([1, 2, 3, 4]);
+      s1.print();
+
+      expect(s1.toString(",")).toEqual("1,2,3,4");
+
+      const s2 = new CuteSet([1, 2, {}, "foo"]);
+      s2.print();
+
+      expect(s2.toString(", ")).toEqual("1, 2, [object Object], foo");
+    });
+  });
+
+  describe("Initialization", () => {
+    it("Should correctly initialize set with nested arrays", () => {
+      const s1 = new CuteSet([1, 2, 3, [3, 4]]);
+      expect(s1.raw()).toEqual(new Set([1, 2, 3, [3, 4]]));
+
+      expect(s1.toArray()[3]).toEqual([3, 4]);
+      expect(s1.toString()).toEqual("1233,4");
+    });
+  });
 });
