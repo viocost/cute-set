@@ -87,9 +87,14 @@ export default class CuteSet<T = any> implements ICuteSet {
 
   isSubsetOf(candidate: CuteSetInput<T>) {
     const normalized = asCuteSet(candidate);
+
+    if (this.length > normalized.length) {
+      return false;
+    }
+
     return this.reduce(
       (res, item) => res && normalized.has(item),
-      this.length <= normalized.length
+      true as boolean
     ) as boolean;
   }
 
@@ -181,7 +186,7 @@ export default class CuteSet<T = any> implements ICuteSet {
 
   forEach(cb: Function, thisArg?: any): void {
     for (let i of this._set) {
-      cb(i, i, thisArg);
+      cb(i, thisArg);
     }
   }
 
@@ -197,8 +202,8 @@ export default class CuteSet<T = any> implements ICuteSet {
     return this.toArray().join(delimiter);
   }
 
-  print(delimiter = ", ") {
-    console.log(this.toString(delimiter));
+  print(delimiter = ", ", printer = console.log) {
+    printer(this.toString(delimiter));
   }
 }
 
