@@ -188,8 +188,22 @@ describe(CuteSet.name, () => {
       const s = new CuteSet([1, 2, 3]);
       expect(s.isSubsetOf([0, 1, 2, 3, 4])).toBeTruthy();
       expect(s.isSubsetOf([0, 1, 3, 4])).toBeFalsy();
+      expect(s.isSubsetOf([2])).toBeFalsy();
       expect(new CuteSet().isSubsetOf([])).toBeTruthy();
     });
+  });
+
+  describe("forEach", () => {
+    const s = new CuteSet([1, 2, 3]);
+
+    const mockCb = jest.fn();
+    s.forEach(mockCb);
+
+    expect(mockCb).toHaveBeenCalledTimes(3);
+
+    for (const el of s) {
+      expect(mockCb).toHaveBeenCalledWith(el, undefined);
+    }
   });
 
   describe("Symmetric difference", () => {

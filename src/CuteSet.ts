@@ -186,7 +186,7 @@ export default class CuteSet<T = any> implements ICuteSet {
 
   forEach(cb: Function, thisArg?: any): void {
     for (let i of this._set) {
-      cb(i, i, thisArg);
+      cb(i, thisArg);
     }
   }
 
